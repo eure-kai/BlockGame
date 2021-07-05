@@ -1,2 +1,2 @@
 # BlockGame
-Java Graphics/BlueJ program that runs a Block Game similar to tetris (June 2021)
+Java Graphics/BlueJ program that runs a simple version of tetris (June 2021)
