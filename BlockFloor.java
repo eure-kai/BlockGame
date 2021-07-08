@@ -1,4 +1,4 @@
-//Step 1 - Creating a Block floor (before implementing the Falling part)
+//Step 1 - Creating a collection of blocks (Block Floor)
 
 import java.awt.*;
 import java.applet.*;
