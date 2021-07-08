@@ -10,10 +10,6 @@ public class BlocksFalling extends Applet implements Runnable {
    private int xVal = 0;
    private int yVal = 0;
    
-   private int r1 = (int) (Math.random() * 20);
-   private int prev = 0;
-   private int r2 = 0;
-   
    private int r = (int) (Math.random() * 256);
    private int gr = (int) (Math.random() * 256);
    private int b = (int) (Math.random() * 256);
@@ -32,53 +28,50 @@ public class BlocksFalling extends Applet implements Runnable {
    
    public void run() {
        while (true) {
-           xVal = 20 * r1;
-           yVal = 20 * r2;
-               
-           blo = new Block(xVal, yVal, r, gr, b, 20);
-           
            repaint();
-           r2++;
-           System.out.println(xVal);
-           
+                      
            try {
-                Thread.sleep(100);
+                t.sleep(100);
             } catch (Exception e) {}
+            
+           blo.incY();
        }
        
    }
    
+   
    public void paint(Graphics g) {
-       while (true) {
-           for (Block[] arr: array) {
-               for (Block temp: arr) {
-                       if (temp != null) temp.draw(g);
-               }
-           }
-           
-           if (r2 == 19 || array[r1][r2+1] != null) {
-               array[r1][r2] = blo;
-               
-               r = (int) (Math.random() * 256);
-               gr = (int) (Math.random() * 256);
-               b = (int) (Math.random() * 256);
-               
-               prev = r1;
-               
-               while (true) {
-                   r1 = (int) (Math.random() * 20);
-                   r2 = 0;
-                   
-                   if (r1 != prev) break;
-               }
-           }
-           
-           else {
-               blo.draw(g);
-               break;
+       blo.draw(g);
+       
+       for (Block[] arr: array) {
+           for (Block temp: arr) {
+              if (temp != null) temp.draw(g);
            }
        }
        
+       check(g); //paint method is solely for graphics
+       //thus, we will do further calculations in a separate method
+   }
+   
+   
+   public void check(Graphics g) {
+       int r1 = (blo.getX()) / 20; //index for Block array
+       int r2 = (blo.getY()) / 20; //index for array inside Block array
+       
+       //if block reaches bottom, or if another block is underneath:
+       if (r2 == 19 || array[r1][r2+1] != null) {
+           array[r1][r2] = blo;
+           
+           r = (int) (Math.random() * 256);
+           gr = (int) (Math.random() * 256);
+           b = (int) (Math.random() * 256);
+           
+           int temp = (int) (Math.random() * 20);
+           xVal = 20 * temp;
+           yVal = 0;
+           
+           blo = new Block(xVal, yVal, r, gr, b, 20);
+       }
    }
        
    
