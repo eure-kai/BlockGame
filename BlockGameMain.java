@@ -1,4 +1,4 @@
-//Step 3 - Implementing KeyListeners
+//Step 3 - Finalizing the game (Implementing KeyListeners)
 
 import java.awt.*;
 import java.applet.*;
