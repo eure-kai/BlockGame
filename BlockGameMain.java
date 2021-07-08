@@ -1,11 +1,9 @@
-package BlockGame;
-
-
 //Step 3 - Implementing KeyListeners
 
 import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
+
 
 public class BlockGameMain extends Applet implements KeyListener, Runnable {
    Thread t = null;
