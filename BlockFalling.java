@@ -4,7 +4,7 @@ import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
-public class BlocksFalling extends Applet implements Runnable {
+public class BlockFalling extends Applet implements Runnable {
    Thread t = null;
    
    private int xVal = 0;
