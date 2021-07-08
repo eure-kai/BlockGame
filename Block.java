@@ -7,12 +7,12 @@ public class Block {
     private int yC;
     
     private int size;
-    private Color color;
+    private Color c;
     
     public Block(int x, int y, int r, int gr, int b, int s) {
         xC = x;
         yC = y;
-        color = new Color(r, gr, b);
+        c = new Color(r, gr, b);
         size = s;
     }
     
@@ -39,7 +39,7 @@ public class Block {
     }
     
     public void draw(Graphics g) {
-        g.setColor(color);
+        g.setColor(c);
         g.fillRect(xC, yC, size, size);
     }
 
